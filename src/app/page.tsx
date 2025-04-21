@@ -1,9 +1,22 @@
+'use client'
+
 import JobList from "@/components/home/JobList";
 import SearchBar from "@/components/home/SearchBar";
 import { fetchJobs } from "@/lib/api";
+import { useJobStore } from "@/stores/jobStore";
+import { JobPostInterface } from "@/types/jobPost";
+import { useEffect } from "react";
 
-export default async function Home() {
-  const jobs = await fetchJobs();
+export default function Home() {
+  const { jobPosts, setJobPosts } = useJobStore()
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const jobs: JobPostInterface[] = await fetchJobs()
+      setJobPosts(jobs)
+    }
+    fetchData()
+  }, [])
 
   return (
     <div >
@@ -14,7 +27,7 @@ export default async function Home() {
 
       <section className="w-full md:w-5/6 xl:w-3/4 mx-auto my-8">
         <SearchBar />
-        <JobList jobs={jobs} />
+        <JobList jobs={jobPosts} />
       </section>
       
     </div>
