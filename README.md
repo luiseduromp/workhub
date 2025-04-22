@@ -1,36 +1,37 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# WorkHub - Job Board App
 
-## Getting Started
+This is a simple job board application built with Next.js. It fetches job listings from [Jobicy API](https://github.com/Jobicy/remote-jobs-api) and displays it in a list.
 
-First, run the development server:
+The main page allows to filter results by tag, location and industry, which are the parameters provided by the API to filter the results.
 
+Each job post has its own page, with the whole information and description.
+
+
+## 🚀 Getting Started
+
+Follow these steps to get the app up and running in development mode.
+
+### 1. Clone the Repository
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git git@github.com:luiseduromp/equito-workhub.git
+cd equito-workhub
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2. Install the dependencies
+```bash
+npm install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 3. Run the app in development mode
+```bash
+npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🛠️ Tools Used
+- [Next.js](https://nextjs.org/). As main framework for the app.
+- [TypeScript](https://www.typescriptlang.org/). For static type checking.
+- [Tailwind CSS](https://tailwindcss.com/). As a CSS framework.
+- [Zustand](https://zustand.docs.pmnd.rs/). For global state management.
+- [Shadcn UI](https://ui.shadcn.com/). For ready-to-use Reaact styled components.
+- [Jobicy API](https://github.com/Jobicy/remote-jobs-api). To retrieve updated job posts.
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
