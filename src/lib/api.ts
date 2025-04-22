@@ -1,9 +1,28 @@
 import axios from "axios"
 
-
 const JOB_API = "https://jobicy.com/api/v2/remote-jobs"
 
-export async function fetchJobs(){
-    const response = await axios.get(JOB_API, { params: { count: 50 }});
-    return response.data.jobs
+interface FilterInterface {
+    tag: string
+    geo: string
+    industry: string
+}
+
+export async function fetchJobs( filters: Partial<FilterInterface> = {} ){
+    console.log("FILTERS", filters)
+
+    try {
+        const params = Object.fromEntries(
+            Object.entries(filters).filter(([_, v]) => v !== '' && v !== undefined)
+        )
+        
+        const response = await axios.get(JOB_API, { params: { count:50, ...params} });
+        return response.data.jobs
+        
+    } catch (error) {
+        console.log("Error", error)
+        throw new Error("Error fetching job posts: " + error);
+        //return []
+    }
+    
 }
