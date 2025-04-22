@@ -5,34 +5,44 @@ import JobCard from '@/components/home/JobCard'
 import { Skeleton } from '@/components/ui/skeleton'
 import { LoaderCircle } from 'lucide-react'
 import { JobPostInterface } from '@/types/jobPost'
+import { useJobStore } from '@/stores/jobStore'
 
-
-
-export default function JobList({ jobs }: { jobs: JobPostInterface[] }) {
-    const BATCH_SIZE = 10
-
+export default function JobList() {
+    const { jobPosts } = useJobStore()
     const [visibleJobs, setVisibleJobs] = useState<JobPostInterface[]>([])
     const [loading, setLoading] = useState(false)
-    const [index, setIndex] = useState(0)
+    const indexRef = useRef(0)
+
+    const BATCH_SIZE = 10
 
     const loaderRef = useRef<HTMLDivElement | null>(null)
 
     const loadMore = () => {
         setLoading(true)
         setTimeout(() => {
-            const nextIndex = index + BATCH_SIZE
-            const newBatch = jobs.slice(index, nextIndex)
-            setVisibleJobs((prev) => [...prev, ...newBatch])
-            setIndex(nextIndex)
+            if (jobPosts.length){
+
+                const nextIndex = indexRef.current + BATCH_SIZE
+                const newBatch = jobPosts.slice(indexRef.current, nextIndex)
+                setVisibleJobs((prev) => [...prev, ...newBatch])
+                indexRef.current = nextIndex
+            }
             setLoading(false)
         }, 1000)
     }
 
     useEffect(() => {
+        setLoading(true)
+        indexRef.current = 0
+        setVisibleJobs([])
+        loadMore()
+    }, [ jobPosts ])
+
+    useEffect(() => {
         if (!loaderRef.current) return
 
         const observer = new IntersectionObserver((entries) => {
-            if (entries[0].isIntersecting && !loading && index < jobs.length) {
+            if (entries[0].isIntersecting && !loading && indexRef.current < jobPosts.length) {
                 loadMore()
             }
         })
@@ -44,19 +54,19 @@ export default function JobList({ jobs }: { jobs: JobPostInterface[] }) {
                 observer.unobserve(loaderRef.current)
             }
         }
-    }, [loaderRef.current, loading, index, jobs.length])
+    }, [loaderRef.current, loading, indexRef.current, jobPosts.length])
 
 
     return (
         <section>
-            
-            
 
-            <ul>
-                {visibleJobs.map((job) => (
-                    <JobCard key={String(job.id)} jobPost={job} />
-                ))}
-            </ul>
+            {jobPosts.length ? 
+                (<ul>
+                    {visibleJobs.map((job) => (
+                        <JobCard key={String(job.id)} jobPost={job} />
+                    ))}
+                </ul>) : (<p>No JobPosts have been found that match the criteria</p>)
+            }
 
             {loading && (
                 <>
