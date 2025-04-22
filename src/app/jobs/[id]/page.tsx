@@ -3,11 +3,14 @@
 import { useJobStore } from "@/stores/jobStore"
 import { useParams } from "next/navigation"
 import DOMPurify from 'dompurify'
+import { useRouter } from "next/navigation"
+import { Button } from "@/components/ui/button"
 
 
 export default function JobPage() {
     const { id } = useParams()
     const jobPost = useJobStore((state) => state.getJobById(Number(id)))
+    const router = useRouter()
 
     if(!jobPost) {
         return (
@@ -19,7 +22,9 @@ export default function JobPage() {
 
     return (
         <main>
-            <section className="w-full md:w-5/6 xl:w-3/4 mx-auto py-10">
+
+            <section className="w-full px-8 md:px-0 md:w-5/6 xl:w-3/4 mx-auto py-10">
+                <Button onClick={() => router.back()}>Return</Button>
                 <img src={jobPost.companyLogo} alt={jobPost.companyName} className="h-12 w-12 rounded-lg mb-3" />
                 <h3 className="text-xl font-semibold mb-3">{jobPost.companyName} is hiring a</h3>
                 <h1 className="text-2xl md:text-4xl font-semibold mb-3">{jobPost.jobTitle}</h1>
@@ -27,7 +32,7 @@ export default function JobPage() {
 
             </section>
 
-            <section className="w-full md:w-5/6 xl:w-3/4 mx-auto py-10">
+            <section className="w-full px-8 md:px-0 md:w-5/6 xl:w-3/4 mx-auto py-10">
                 <div className="prose max-w-none dark:prose-invert"
                     dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(jobPost.jobDescription) }}
                 />
