@@ -11,7 +11,7 @@ const geistSans = Geist({
 
 
 export const metadata: Metadata = {
-  title: "JobHub",
+  title: "WorkHub",
   description: "Your one-stop job search platform"
 };
 
