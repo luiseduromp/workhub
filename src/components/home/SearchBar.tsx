@@ -22,11 +22,11 @@ const SearchBar = () => {
     }
 
     return (
-        <div className="w-full bg-neutral-950/80 backdrop-blur sticky top-[60px] px-5 py-3 my-8">
+        <div className="w-full bg-neutral-950/80 backdrop-blur sticky top-[72px] px-5 py-3 my-8">
             <div className="flex pe-3 items-center gap-4 flex-wrap lg:justify-center">
 
                 <FilterSelector select="geo" />
-
+                
                 <FilterSelector select="industry" />
 
                 <Separator orientation="vertical" className="py-4 mx-3 hidden lg:block"/>
@@ -35,7 +35,6 @@ const SearchBar = () => {
                     <Input type="text" placeholder="Job position" onChange={handleJobChange} className="w-3xs" />
                     <Button variant='outline' onClick={handleSearch} className="cursor-pointer">
                         <Search className="h-4" />
-                        
                     </Button>
                 </div>
               

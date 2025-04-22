@@ -21,7 +21,6 @@ export default function JobList() {
         setLoading(true)
         setTimeout(() => {
             if (jobPosts.length){
-
                 const nextIndex = indexRef.current + BATCH_SIZE
                 const newBatch = jobPosts.slice(indexRef.current, nextIndex)
                 setVisibleJobs((prev) => [...prev, ...newBatch])

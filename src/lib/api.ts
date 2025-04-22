@@ -9,8 +9,6 @@ interface FilterInterface {
 }
 
 export async function fetchJobs( filters: Partial<FilterInterface> = {} ){
-    console.log("FILTERS", filters)
-
     try {
         const params = Object.fromEntries(
             Object.entries(filters).filter(([_, v]) => v !== '' && v !== undefined)
@@ -20,9 +18,7 @@ export async function fetchJobs( filters: Partial<FilterInterface> = {} ){
         return response.data.jobs
         
     } catch (error) {
-        console.log("Error", error)
         throw new Error("Error fetching job posts: " + error);
-        //return []
     }
     
 }
