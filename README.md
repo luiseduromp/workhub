@@ -13,7 +13,7 @@ Follow these steps to get the app up and running in development mode.
 
 ### 1. Clone the Repository
 ```bash
-git git@github.com:luiseduromp/equito-workhub.git
+git clone https://github.com/luiseduromp/equito-workhub.git
 cd equito-workhub
 ```
 
