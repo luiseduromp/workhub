@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button"
 import { ArrowLeft, ExternalLink } from "lucide-react"
 import JobInfo from "@/components/jobs/JobInfo"
 import JobNotFound from "@/components/jobs/JobNotFound"
+import Image from "next/image"
 
 
 export default function JobPage() {
@@ -38,9 +39,9 @@ export default function JobPage() {
             </section>
 
 
-            <section className="w-full px-8 md:px-0 md:w-5/6 xl:w-3/4 mx-auto py-6 sticky top-[72px] bg-neutral-950/70 backdrop-blur z-10">
+            <section className="w-full px-8 md:px-0 md:w-5/6 xl:w-3/4 mx-auto py-6 sticky top-[78px] bg-neutral-950/70 backdrop-blur z-10">
                 <div className="flex gap-6 items-center">
-                    <img src={jobPost.companyLogo} alt={jobPost.companyName} className="h-16 w-auto lg:h-22 rounded-lg" />
+                    <Image src={jobPost.companyLogo} alt={jobPost.companyName} className="h-16 w-auto lg:h-22 rounded-lg" width={50} height={50} />
                     <div>
                         <h3 className="text-xl font-semibold mb-3">
                             <span className="text-sky-500">{jobPost.companyName}</span> is hiring a

@@ -1,4 +1,3 @@
-import axios from "axios"
 import { create } from "zustand"
 import { JobPostInterface } from "@/types/jobPost"
 
@@ -6,7 +5,7 @@ type JobStore = {
     jobPosts: JobPostInterface[]
     filters: FilterInterface
     setJobPosts: (jobPosts: JobPostInterface[]) => void
-    getJobById: (id: Number) => JobPostInterface | undefined   
+    getJobById: (id: number) => JobPostInterface | undefined   
     setFilters: (filters: Partial<FilterInterface>) => void
 }
 
@@ -23,7 +22,7 @@ export const useJobStore = create<JobStore>((set, get) => ({
     setFilters: (filters) => {
         set((state) => ({ filters: { ...state.filters, ...filters } }))
     },
-    getJobById: (id:Number) => {
+    getJobById: (id: number) => {
         const { jobPosts } = get()
         return jobPosts.find((job) => job.id === id)
     },

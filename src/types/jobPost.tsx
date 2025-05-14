@@ -1,7 +1,7 @@
 export interface JobPostInterface {
     companyLogo: string,
     companyName: string
-    id: Number,
+    id: number,
     jobDescription: string,
     jobExcerpt: string,
     jobGeo: string,
@@ -12,7 +12,7 @@ export interface JobPostInterface {
     jobType: string[],
     pubDate: string,
     url: string,
-    annualSalaryMax?: Number,
-    annualSalaryMin?: Number,
+    annualSalaryMax?: number,
+    annualSalaryMin?: number,
     salaryCurrency?: string,
 }

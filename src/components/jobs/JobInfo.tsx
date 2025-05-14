@@ -12,7 +12,7 @@ const JobInfo = ({jobPost}: {jobPost:JobPostInterface}) => {
     return (
         <section className="w-full px-8 md:px-0 md:w-5/6 xl:w-3/4 mx-auto py-10 ">
             <h3 className="text-3xl mb-4 font-bold">Job Intro</h3>
-            <p className="mb-8 text-neutral-300">
+            <p className="mb-12 text-neutral-300 text-xl">
                 {jobPost.jobExcerpt}
             </p>
 

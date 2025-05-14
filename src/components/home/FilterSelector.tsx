@@ -68,7 +68,7 @@ const FilterSelector = ({ select }: { select: 'geo' | 'industry' }) => {
                             <CommandEmpty>No {label} found.</CommandEmpty>
                             <CommandGroup>
                                 <CommandItem
-                                    onSelect={(currentValue) => {
+                                    onSelect={() => {
                                         setValue('')
                                         setFilters( { [select]: '' })
                                         setOpen(false)

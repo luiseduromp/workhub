@@ -22,7 +22,7 @@ const SearchBar = () => {
     }
 
     return (
-        <div className="w-full bg-neutral-950/80 backdrop-blur sticky top-[72px] px-5 py-3 my-8">
+        <div className="w-full bg-neutral-950/80 backdrop-blur-sm sticky top-[80px] px-5 py-3 my-8">
             <div className="flex pe-3 items-center gap-4 flex-wrap lg:justify-center">
 
                 <FilterSelector select="geo" />
